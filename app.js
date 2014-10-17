@@ -4,7 +4,7 @@ var _ = require('underscore');
 var R = 6373; // Radius of the earth in km
 
 var deg2rad = function (deg) {
-  return deg * (Math.PI/180)
+  return deg * (Math.PI/180);
 };
 
 var distance = function (point1, point2) {
@@ -102,25 +102,3 @@ info(throttle(points, 30));
 
 console.log('\nMax speed 35 km/h');
 info(throttle(points, 35));
-
-
-
-
-// In min
-// console.log(totalTime(points)*60);
-
-// Total distance: 6.813706487270152 km
-// Total time: 14.299200000241399 min
-// Average speed: 28.59057774066433 km/h
-
-// decorateSpeed(points);
-// console.log(points);
-//
-// console.log('\nStandard: ');
-// info(points);
-//
-// console.log('\nThrottle 35: ');
-// info(throttle(points, 35));
-//
-// console.log('\nThrottle 30: ');
-// info(throttle(points, 30));
