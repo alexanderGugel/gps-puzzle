@@ -77,24 +77,20 @@ var decorateTimeDiff = function (points) {
   }
 };
 
-fs.readFile('data.txt', 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err);
-  }
-  data = _.map(data.split('\n'), function (row) {
-    return row.split(' ');
-  });
-  var points = data.slice(0, data.length-1);
-
-  decorateSpeed(points);
-  console.log(points);
-
-  console.log('\nStandard: ');
-  info(points);
-
-  console.log('\nThrottle 35: ');
-  info(throttle(points, 35));
-
-  console.log('\nThrottle 30: ');
-  info(throttle(points, 30));
+var file = fs.readFileSync('data.txt', 'utf8');
+var data = _.map(file.split('\n'), function (line) {
+  return line.split(' ');
 });
+var points = data.slice(0, data.length-1);
+
+decorateSpeed(points);
+console.log(points);
+
+console.log('\nStandard: ');
+info(points);
+
+console.log('\nThrottle 35: ');
+info(throttle(points, 35));
+
+console.log('\nThrottle 30: ');
+info(throttle(points, 30));
