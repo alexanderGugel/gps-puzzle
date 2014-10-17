@@ -6,23 +6,10 @@ var deg2rad = function (deg) {
 };
 
 var distance = function (point1, point2) {
-  var lat1 = point1.latitude;
-  var lon1 = point1.longitude;
-  var lat2 = point2.latitude;
-  var lon2 = point2.longitude;
-
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);
-  var dLon = deg2rad(lon2-lon1);
-  var a =
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var distance = R * c; // Distance in km
-
-  // console.log('Distance ' + lat1 + '|' + lon1 + ' -> ' + lat2 + '|' + lon2 + ': ' + distance);
-  return distance;
+  return Math.acos(
+    Math.sin(deg2rad(point1.latitude)) * Math.sin(deg2rad(point2.latitude)) +
+    Math.cos(deg2rad(point1.latitude)) * Math.cos(deg2rad(point2.latitude)) * Math.cos(deg2rad(point2.longitude - point1.longitude))
+  )*6370;
 };
 
 var file = fs.readFileSync('data.txt', 'utf8');
