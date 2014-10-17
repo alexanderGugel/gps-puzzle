@@ -1,8 +1,6 @@
 var fs = require('fs');
 var _ = require('underscore');
 
-var R = 6373; // Radius of the earth in km
-
 var deg2rad = function (deg) {
   return deg * (Math.PI/180);
 };
